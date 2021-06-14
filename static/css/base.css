@@ -54,8 +54,8 @@ body {
     border: 0;
 }
 
-#myCarousel {
-    height: calc(100vh-120px);
+.carousel {
+    margin-top: 100px;
 }
 
 
@@ -63,7 +63,7 @@ body {
 /*-----------------CAROUSEL---------------*/
 
 .carousel-item {
-    max-height: 650px;
+    max-height: 40rem;
 }
 
 .carousel-content {
@@ -76,7 +76,11 @@ body {
     padding: 5px;
     text-align: center;
 }
-
+.carousel-indicators [data-bs-target]{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
 .carousel-heading {
     text-transform: uppercase;
     color: #f9f8f6;
@@ -86,7 +90,49 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Sections */
+#products,
+#about,
+#news {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
+/* buttons */
+
+
+.btn-action {
+    background: white;
+    color: #ea8b4b;
+    border: solid 1px #ea8b4b;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+.btn-action:hover,
+.btn-action:active,
+.btn-action:focus {
+    background: #ea8b4b;
+    color: white;
+    border: solid 1px white;
+}
+
+/* Heading */
+.section-title {
+    font-family: 'Open Sans', sans-serif;
+    color: #ea8b4b;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 15px;
+    text-transform: uppercase;
+}
+
+/* About */
+.section-img img {
+    width: 500px;
+    height: 100%;
+}
 
 /*-------FOOTER---------*/
 
