@@ -44,7 +44,7 @@
   <div class="row">
     {% for category in categories %} 
       <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 border-0">
+        <div class="card card-cat h-100 border-0">
           {% if category.category_img %}
             <a href="">
               <img src="{{ category.category_img.url }}" class="card-img-top img-fluid" alt="{{ category.category_name }}">
@@ -62,8 +62,6 @@
       {% endfor %}
   </div>
 
-  
-  
 </div>
 </section>
 <!-- About section -->

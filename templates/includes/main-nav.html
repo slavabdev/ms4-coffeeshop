@@ -8,22 +8,12 @@
                 Shop <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">Coffee</a>
-                <a href="" class="dropdown-item ">Equipment</a>
-                <a href="" class="dropdown-item ">Merch</a>
+                <a href="{% url 'all_products' %}?category_name=coffee" class="dropdown-item">Coffee</a>
+                <a href="{% url 'all_products' %}" class="dropdown-item ">Equipment</a>
+                <a href="{% url 'all_products' %}" class="dropdown-item ">Merch</a>
+                <a href="{% url 'all_products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
-        </li>
-        <li class="nav-item dropdown d-lg-none">
-            <a class="logo-font drop-head nav-link text-dark mr-5" href="#" id="all-products-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter products <i class="fas fa-chevron-down"></i>
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
-                <a href="" class="dropdown-item">All Products</a>
-            </div>
         </li>
         <li class="nav-item d-lg-none">
             <a class="nav-link logo-font drop-head text-dark mr-5" href="#">News</a>

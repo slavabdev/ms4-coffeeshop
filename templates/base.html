@@ -82,9 +82,10 @@
                       </div>
                   </a>
                   <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                          <a href="" class="dropdown-item">Coffee</a>
+                          <a href="{% url 'all_products' %}?category_name=coffee" class="dropdown-item">Coffee</a>
                           <a href="" class="dropdown-item">Equipent</a>  
-                          <a href="" class="dropdown-item">Merch</a> 
+                          <a href="" class="dropdown-item">Merch</a>
+                          <a href="{% url 'all_products' %}" class="dropdown-item">All Products</a>  
 
                   </div>
                   <li class="list-inline-item dropdown">
