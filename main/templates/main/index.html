@@ -42,36 +42,24 @@
       <h3 class="section-title">What we sell</h3>
   
   <div class="row">
+    {% for category in categories %} 
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card">
-          <a href="">
-            <img src="{{MEDIA_URL}}slider-1.jpg" class="card-img-top" alt="product-image">
-          </a>  
-            <div class="card-body">
-              <h5 class="card-title">Some Category</h5>
+        <div class="card h-100 border-0">
+          {% if category.category_img %}
+            <a href="">
+              <img src="{{ category.category_img.url }}" class="card-img-top img-fluid" alt="{{ category.category_name }}">
+            </a>  
+          {% else %}
+            <a href="">
+              <img src="{{ MEDIA_URL}}placeholder.jpg" class="card-img-top img-fluid" alt="{{ category.category_name }}">
+            </a>
+          {% endif %}  
+            <div class="card-body pb-0 text-center">
+              <h5 class="card-title sm-heading">{{ category.category_name }}</h5>
             </div>
           </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card">
-          <a href="">
-            <img src="{{MEDIA_URL}}slider-1.jpg" class="card-img-top" alt="product-image">
-          </a>  
-            <div class="card-body">
-              <h5 class="card-title">Some Category</h5>
-            </div>
-          </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card">
-          <a href="">
-            <img src="{{MEDIA_URL}}slider-1.jpg" class="card-img-top" alt="product-image">
-          </a>  
-            <div class="card-body">
-              <h5 class="card-title">Some Category</h5>
-            </div>
-          </div>
-      </div>
+      {% endfor %}
   </div>
 
   

@@ -90,6 +90,7 @@ body {
     margin-bottom: 2rem;
 }
 
+
 /* Sections */
 #products,
 #about,
@@ -127,6 +128,24 @@ body {
     margin: 15px;
     text-transform: uppercase;
 }
+
+.sm-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
 
 /* About */
 .section-img img {

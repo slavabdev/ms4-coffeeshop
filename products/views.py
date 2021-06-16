@@ -30,8 +30,8 @@ def all_products(request):
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
-        if 'qry' in request.GET:
-            query = request.GET['qry']
+        if 'q' in request.GET:
+            query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any searсh criteria")
                 return redirect(reverse('products'))
