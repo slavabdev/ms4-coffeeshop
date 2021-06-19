@@ -122,6 +122,24 @@ body {
     border: solid 1px white;
 }
 
+
+.btn-action-rev {
+    background: #ea8b4b;
+    color: white;
+    border: solid 1px white;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+.btn-action-rev:hover,
+.btn-action-rev:active,
+.btn-action-rev:focus {
+    background: white;
+    color: #ea8b4b;
+    border: solid 1px #ea8b4b;
+}
+
+
 /* Heading */
 .section-title {
     font-family: 'Open Sans', sans-serif;
