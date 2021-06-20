@@ -9,9 +9,9 @@
                 <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'all_products' %}?category_name=merch" class="dropdown-item">Coffee</a>
-                <a href="{% url 'all_products' %}" class="dropdown-item ">Equipment</a>
-                <a href="{% url 'all_products' %}" class="dropdown-item ">Merch</a>
+                <a href="{% url 'all_products' %}?category=coffee" class="dropdown-item">Coffee</a>
+                <a href="{% url 'all_products' %}?category=equipment" class="dropdown-item ">Equipment</a>
+                <a href="{% url 'all_products' %}?category=merch" class="dropdown-item ">Merch</a>
                 <a href="{% url 'all_products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>

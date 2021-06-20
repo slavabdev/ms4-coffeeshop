@@ -8,8 +8,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category_name', 'slug')
-    prepopulated_fields = {'slug': ('category_name',)}
+    list_display = ('name', 'slug')
+    prepopulated_fields = {'slug': ('name',)}
 
 
 admin.site.register(Product, ProductAdmin)

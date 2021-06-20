@@ -20,7 +20,7 @@ def all_products(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
-            if sortkey == 'category_name':
+            if sortkey == 'category':
                 sortkey = 'category__name'
 
             if 'direction' in request.GET:
@@ -31,8 +31,8 @@ def all_products(request):
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            products = products.filter(category__category_name__in=categories)
-            categories = Category.objects.filter(category_name__in=categories)
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
 
         if 'qry' in request.GET:
             query = request.GET['qry']
@@ -49,7 +49,7 @@ def all_products(request):
         'products': products,
         'search_term': query,
         'current_categories': categories,
-        'current_sorting': current_sorting
+        'current_sorting': current_sorting,
     }
     return render(request, 'products/products.html', context)
 
