@@ -50,7 +50,7 @@
 
                 </div>
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                    <form method="GET" action="">
+                    <form method="GET" action="{% url 'all_products' %}">
                         <div class="input-group w-100">
                             <input type="text" class="form-control border border-black rounded-0" name="qry" placeholder="Search our site">
                             <div class="input-group-append">
@@ -86,9 +86,9 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                <a href="{% url 'all_products' %}?category_name=coffee" class="dropdown-item">Coffee</a>
-                                <a href="" class="dropdown-item">Equipent</a>
-                                <a href="" class="dropdown-item">Merch</a>
+                                <a href="{% url 'all_products' %}?category=coffee" class="dropdown-item">Coffee</a>
+                                <a href="{% url 'all_products' %}" class="dropdown-item">Equipment</a>
+                                <a href="{% url 'all_products' %}?category=merch" class="dropdown-item">Merch</a>
                                 <a href="{% url 'all_products' %}" class="dropdown-item">All Products</a>
                             </div>
                         </li>
@@ -153,15 +153,15 @@
                         {% with message.level as level %}
                         {% if level == 40 %}
                             <!--error-->
-                            {% include 'includes/toasts/toast_error.html' %}
+                            {{ message }}
                         {% elif level == 30 %}
                             <!--warning-->
-                            {% include 'includes/toasts/toast_warning.html' %}
+                            {{ message }}
                         {% elif level == 25 %}
                             <!--success-->
-                            {% include 'includes/toasts/toast_success.html' %}
+                            {{ message }}
                         {% else %}
-                            {% include 'includes/toasts/toast_info.html' %}
+                        {{ message }}
                         {% endif %}
                         {% endwith %}
                     {% endfor %}

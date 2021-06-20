@@ -9,7 +9,7 @@
                 <i class="fas fa-chevron-down"></i>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'all_products' %}?category_name=coffee" class="dropdown-item">Coffee</a>
+                <a href="{% url 'all_products' %}?category_name=merch" class="dropdown-item">Coffee</a>
                 <a href="{% url 'all_products' %}" class="dropdown-item ">Equipment</a>
                 <a href="{% url 'all_products' %}" class="dropdown-item ">Merch</a>
                 <a href="{% url 'all_products' %}" class="dropdown-item">All Products</a>
@@ -28,7 +28,7 @@
             </div>
         </a>
         <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
-            <form class="form" method="GET" action="">
+            <form class="form" method="GET" action="{% url 'all_products' %}">
                 <div class="input-group w-100">
                     <input class="form-control border border-black rounded-0" type="text" name="qry" placeholder="Search across the shop">
                         <div class="input-group-append">

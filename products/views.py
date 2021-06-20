@@ -5,7 +5,6 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 
-
 def all_products(request):
     '''A view to show all products'''
     products = Product.objects.all()
@@ -30,16 +29,16 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
-        if 'category_name' in request.GET:
-            categories = request.GET['category_name'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__category_name__in=categories)
+            categories = Category.objects.filter(category_name__in=categories)
 
         if 'qry' in request.GET:
             query = request.GET['qry']
             if not query:
                 messages.error(request, "Please enter a valid search criteria")
-                return redirect(reverse('products'))
+                return redirect(reverse('all_products'))
         
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
@@ -49,8 +48,8 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
-        'categories' : categories,
-        'current_sorting' : current_sorting
+        'current_categories': categories,
+        'current_sorting': current_sorting
     }
     return render(request, 'products/products.html', context)
 
