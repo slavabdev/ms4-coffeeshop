@@ -237,6 +237,10 @@ footer {
         margin-right: 1rem;
         font-size: 12px;
     }
+
+    .bag-btn .btn-action {
+        margin-bottom: 0.3rem;
+    }
 }
 /*-------for small mobile devices---------*/
 @media(max-width:600px) {
@@ -255,3 +259,4 @@ footer {
         font-size: 10px;
     }
 }
+
