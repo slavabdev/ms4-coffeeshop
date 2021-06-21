@@ -4,102 +4,121 @@
 
 {% block content %}
 
-
     <section class="section-content padding-y bg">
         <div class="page-container">
-            <div
-                class="container">
+            <div class="container">
 
-                <!-- if statement -->
-                <h2 class="text-center">Your Shopping Cart is Empty</h2>
+                <h2 class="text-center section-title ">
+                    Shopping Cart
+                </h2>
+
                 <br>
+                {% if bag_items|length > 0 %}
+                    <p class="main-text text-muted">You have
+                        <strong>
+                            {{ bag_items|length }}
+                        </strong>
+                        items in the cart.
+                    </p>
+                {% endif %}
 
                     <div class="row">
                         <div class="col-lg-9">
-                            <div class="card">
-                                <table class="table table-borderless table-shopping-cart">
-                                    <thead class="text-muted">
-                                        <tr class="small text-uppercase">
-                                            <th scope="col">Product</th>
-                                            <th scope="col" width="120">Quantity</th>
-                                            <th scope="col" width="120">Price</th>
-                                            <th scope="col" class="text-right" width="200"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                            {% if bag_items %}
+                                <div class="card">
+                                    <table class="table table-borderless table-shopping-cart">
+                                        <thead class="text-muted">
+                                            <tr class="small text-uppercase">
+                                                <th scope="col">Product</th>
+                                                <th scope="col"></th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col" class="text-right"></th>
+                                            </tr>
+                                        </thead>
 
-
-                                        <tr>
-                                            <td>
-                                                <div class="itemside align-items-center">
-                                                    <div class="d-block">
-                                                        <img src="" class="img-sm"></div>
-                                                        <div class="info">
-                                                            <a href="" class="title text-dark">fhgghfghfg</a>
-                                                            <p class="text-muted small"></p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button class="decrement-qty btn btn-sm" data-item_id="{{ item.item_id }}" id="minus_item_{{ item.item_id }}">
-                                                                    <span>
-                                                                        <i class="fas fa-minus fa-sm"></i>
-                                                                    </span>
-                                                                </button>
-                                                            </div>
-                                                            <input class="form-control form-control-sm qty_input" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="qty_{{ item.item_id }}">
-
-                                                                <div class="input-group-append">
-                                                                    <button class="increment-qty btn btn-sm" data-item_id="{{ item.item_id }}" id="plus_item_{{ item.item_id }}">
-                                                                        <span>
-                                                                            <i class="fas fa-plus fa-sm"></i>
-                                                                        </span>
-                                                                    </button>
-                                                                </div>
+                                        {% for item in bag_items %}
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-25">
+                                                        <img src="{{ item.product.image.url }}" class="img-fluid"></td>
+                                                        <td>
+                                                            <div class="info">
+                                                                <p class="title text-dark">
+                                                                    <strong>{{ item.product.name }}</strong>
+                                                                </p>
                                                                 {% if item.product.has_sizes %}
-                                                                    <input type="hidden" name="product_size" value="{{ item.size }}">
+                                                                    <input type="hidden" name="product_size" value="{{ item.has_size }}">
                                                                     {% endif %}
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="price-wrap">
-                                                                <div class="price">$
+                                                            <div class="col">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <button class="decrement-qty btn btn-sm" data-item_id="{{ item.item_id }}" id="minus_item_{{ item.item_id }}">
+                                                                            <span>
+                                                                                <i class="fas fa-minus fa-sm"></i>
+                                                                            </span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="qty_{{ item.item_id }}">
+
+                                                                        <div class="input-group-append">
+                                                                            <button class="increment-qty btn btn-sm" data-item_id="{{ item.item_id }}" id="plus_item_{{ item.item_id }}">
+                                                                                <span>
+                                                                                    <i class="fas fa-plus fa-sm"></i>
+                                                                                </span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="bag-btn text-right">
-                                                            <a href="" class="btn btn-action">
-                                                                UPDATE</a>
-                                                            <a href="" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-danger">
-                                                                Remove</a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
+                                                            </td>
+                                                            <td>
+                                                                <div class="price-wrap">
+                                                                    <div class="price">
+                                                                        {{ item.product.price }}
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="bag-btn text-right">
+                                                                <a href="" class="btn btn-action btn-sm text-capitalize">
+                                                                    Update</a>
+                                                                <a href="" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-danger btn-sm">
+                                                                    Remove</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                {% endfor %}
                                             </table>
                                         </div>
-
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="card">
                                             <div class="card-body">
                                                 <dl class="dlist-align">
                                                     <dt>Total price:</dt>
-                                                    <dd class="text-right">$ total</dd>
+                                                    <dd class="text-right">€
+                                                        {{ total|floatformat:2 }}</dd>
                                                 </dl>
                                                 <dl class="dlist-align">
                                                     <dt>Delivery:</dt>
                                                     <dd class="text-right">
-                                                        $ delivery</dd>
+                                                        €
+                                                        {{ delivery|floatformat:2 }}</dd>
                                                 </dl>
                                                 <dl class="dlist-align">
                                                     <dt>Grand Total:</dt>
                                                     <dd class="text-right text-dark b">
-                                                        <strong>$ grand_total</strong>
+                                                        <strong>€
+                                                            {{ grand_total|floatformat:2 }}</strong>
                                                     </dd>
+                                                    {% if free_delivery_delta > 0 %}
+                                                        <p class="main-text text-success">Spend €
+                                                            <strong>{{ free_delivery_delta }}</strong> more
+                                                            and get free shipping!</p>
+                                                    {% endif %}
                                                 </dl>
                                                 <hr>
                                                     <p class="text-center mb-3">
@@ -107,18 +126,16 @@
                                                         <a href="" class="btn btn-action-rev btn-block mb-3">
                                                             Checkout
                                                         </a>
-                                                        <a href="" class="btn btn-action btn-block">Continue Shopping</a>
+                                                        <a href="{% url 'all_products' %}" class="btn btn-action btn-block">Continue Shopping</a>
                                                     </div>
                                                 </div>
-
                                             </div>
-
-
                                         </div>
-
                                     </div>
-                                </div>
-                            </section>
-
-
-                        {% endblock %}
+                                    {% else %}
+                                        <h4 class="text-lg-start text-center">Your shopping cart is empty</h4>
+                                        <a href="{% url 'all_products' %}" class="btn btn-action btn-block">Continue Shopping</a> 
+                                    {% endif %}   
+                            </div>
+                        </section>
+                    {% endblock %}

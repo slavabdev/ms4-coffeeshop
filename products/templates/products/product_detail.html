@@ -23,7 +23,7 @@
                         <div class="price h4">€ {{product.price}}</div>
                     </div>
 
-                    <p>{{ product.description }}</p>
+                    <p class="main-text">{{ product.description }}</p>
 
                     <hr>
                     <form class="form" action="{% url 'add_item_bag' product.slug %}" method="POST">
