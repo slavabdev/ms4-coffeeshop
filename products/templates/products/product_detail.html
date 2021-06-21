@@ -23,7 +23,7 @@
                         <div class="price h4">€ {{product.price}}</div>
                     </div>
 
-                    <p class="main-text">{{ product.description }}</p>
+                    <p>{{ product.description }}</p>
 
                     <hr>
                     <form class="form" action="{% url 'add_item_bag' product.slug %}" method="POST">
@@ -35,7 +35,7 @@
                                     <p><strong>Size:</strong></p>
                                       
                                     <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
-                                        {% if product.category.name == 'Coffee' %}  
+                                        {% if product.category.name == 'coffee' %}  
                                         <option value="xs">250 g</option>
                                         <option value="s">500 g</option>
                                         <option value="m">1 kg</option>
@@ -48,7 +48,6 @@
                                         <option value="xl">5</option>
                                         {% endif %}
                                     </select>
-                                    
                                                                         
                                 </div>
                             {% endif %}

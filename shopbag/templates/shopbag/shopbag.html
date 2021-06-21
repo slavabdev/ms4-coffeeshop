@@ -85,8 +85,31 @@
                                                             <td class="bag-btn text-right">
                                                                 <a href="" class="btn btn-action btn-sm text-capitalize">
                                                                     Update</a>
-                                                                <a href="" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-danger btn-sm">
+                                                                <a href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger btn-sm">
                                                                     Remove</a>
+                                                        
+                                                                
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Delete the <strong>{{ item.product.name }}</strong> </h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                        <p class="main-text">You are going to delete the '<strong>{{ item.product.name }}</strong>' from your shopping cart. 
+                                                                            <br> 
+                                                                            Confirm?</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-danger">Delete</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+        
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -138,4 +161,10 @@
                                     {% endif %}   
                             </div>
                         </section>
+                    {% endblock %}
+
+                    {% block postloadjs %}
+                        {{ block.super}}
+                        <script src="{% static 'products/js/script.js' %}"></script>
+                
                     {% endblock %}
