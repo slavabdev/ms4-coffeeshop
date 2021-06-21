@@ -44,12 +44,13 @@
                                                         <img src="{{ item.product.image.url }}" class="img-fluid"></td>
                                                         <td>
                                                             <div class="info">
-                                                                <p class="title text-dark">
+                                                                <p class="title text-dark mb-0">
                                                                     <strong>{{ item.product.name }}</strong>
                                                                 </p>
+                                                                <p class="my-0 mt-0"><strong>Size: </strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                                                                 {% if item.product.has_sizes %}
-                                                                    <input type="hidden" name="product_size" value="{{ item.has_size }}">
-                                                                    {% endif %}
+                                                                    <input type="hidden" name="product_size" value="{{ item.size }}">
+                                                                {% endif %}
                                                                 </div>
                                                             </div>
                                                         </td>

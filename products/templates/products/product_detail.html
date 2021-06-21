@@ -36,16 +36,15 @@
                                       
                                     <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
                                         {% if product.category.name == 'coffee' %}  
-                                        <option value="xs">250 g</option>
-                                        <option value="s">500 g</option>
-                                        <option value="m">1 kg</option>
+                                        <option value="250g">250 g</option>
+                                        <option value="500g">500 g</option>
+                                        <option value="1kg">1 kg</option>
                                         
                                         {% else %}
-                                        <option value="xs">xs</option>
-                                        <option value="s">s</option>
-                                        <option value="m">l</option>
-                                        <option value="l">4</option>
-                                        <option value="xl">5</option>
+                                        <option value="s">S</option>
+                                        <option value="m">M</option>
+                                        <option value="l">L</option>
+                                        <option value="xl">XL</option>
                                         {% endif %}
                                     </select>
                                                                         
