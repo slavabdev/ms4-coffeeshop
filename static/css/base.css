@@ -185,6 +185,38 @@ body {
     height: 100%;
 }
 
+/* bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999;
+}
+
+.upd-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -8px;
+    right: 36px;
+}
+ .arrow-danger {
+     border-bottom-color:#dc3545 !important;
+ }
+
 /*-------FOOTER---------*/
 
 footer {
