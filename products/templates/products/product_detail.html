@@ -4,121 +4,178 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
-{% endblock %}
+    {% endblock %}
 
 
-{% block content %}
+    {% block content %}
 
 <div class="page-container">
-    <div class="container">
-        <div class="card pt-4 pb-3">
-    <div class="row no-gutters">
-        
-        <div class="col-12 col-md-6 col-lg-4 offset-lg-1">
-            <div class="card-body mb-4">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" class="card-img h-100" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{{ MEDIA_URL }}placeholder.jpg" class="card-img h-100" alt="{{ product.name }}"> 
+<div class="container">
+<div class="card pt-4 pb-3">
+<div class="row no-gutters">
+
+<div class="col-12 col-md-6 col-lg-4 offset-lg-1">
+    <div class="card-body mb-4">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img h-100" alt="{{ product.name }}">
+            {% else %}
+                <img src="{{ MEDIA_URL }}placeholder.jpg" class="card-img h-100" alt="{{ product.name }}">
                 {% endif %}
             </div>
         </div>
-             <div class="col-12 col-md-6 col-lg-6">
-                <div class="content-body p-3">
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="content-body p-3">
 
-                    <h2 class="title">{{ product.name }} </h2> 
-                    <span href="" class="favme"><i class="fas fa-heart fa-lg"></i></span> <span class="fav-font text-muted"> Add to favourites</span>
-                    <div class="mb-3">
-                        <div class="price h4 mt-2">€ {{product.price}}</div>
-                    </div>
+                <h2 class="title">{{ product.name }}
+                </h2>
+                <span href="" class="favme">
+                    <i class="fas fa-heart fa-lg"></i>
+                </span>
+                <span class="fav-font text-muted">
+                    Add to favourites</span>
+                <div class="mb-3">
+                    <div class="price h4 mt-2">€
+                        {{ product.price }}</div>
+                </div>
 
-                    <p>{{ product.description }}</p>
+                <p>{{ product.description }}</p>
 
-                    <hr>
+                <hr>
                     <form class="form" action="{% url 'add_item_bag' product.slug %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
                             {% with product.has_sizes as s %}
                             {% if s %}
                                 <div class="col-12">
-                                    <p><strong>Size:</strong></p>
-                                      
+                                    <p>
+                                        <strong>Size:</strong>
+                                    </p>
+
                                     <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
-                                        {% if product.category.name == 'coffee' %}  
-                                        <option value="250g">250 g</option>
-                                        <option value="500g">500 g</option>
-                                        <option value="1kg">1 kg</option>
-                                        
+                                        {% if product.category.name == 'coffee' %}
+                                            <option value="250g">250 g</option>
+                                            <option value="500g">500 g</option>
+                                            <option value="1kg">1 kg</option>
+
                                         {% else %}
-                                        <option value="s">S</option>
-                                        <option value="m">M</option>
-                                        <option value="l">L</option>
-                                        <option value="xl">XL</option>
+                                            <option value="s">S</option>
+                                            <option value="m">M</option>
+                                            <option value="l">L</option>
+                                            <option value="xl">XL</option>
                                         {% endif %}
                                     </select>
-                                                                        
+
                                 </div>
                             {% endif %}
                             <div class="col-12 mb-4">
-                                <p class="mt-3"><strong>Quantity:</strong></p>
+                                <p class="mt-3">
+                                    <strong>Quantity:</strong>
+                                </p>
                                 <div class="form-group w-50">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-black rounded-0" data-item_id="{{ product.slug }}"
-                                                id="minus_item_{{ product.slug }}">
-                                                <span class="icon"> 
+                                            <button class="decrement-qty btn btn-black rounded-0" data-item_id="{{ product.slug }}" id="minus_item_{{ product.slug }}">
+                                                <span class="icon">
                                                     <i class="fas fa-minus"></i>
                                                 </span>
                                             </button>
                                         </div>
-                                        <input class="form-control qty_input" type="number"
-                                         name="quantity" value="1" min="1" max="99" 
-                                         data-item_id="{{ product.slug }}" 
-                                         id="qty_{{ product.slug }}">
+                                        <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.slug }}" id="qty_{{ product.slug }}">
 
-                                         <div class="input-group-append">
-                                            <button class="increment-qty btn btn-black rounded-0" 
-                                            data-item_id="{{ product.slug}}"
-                                                id="plus_item_{{ product.slug }}">
-                                                <span class="icon"> 
-                                                    <i class="fas fa-plus"></i>
-                                                </span>
-                                            </button>
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-black rounded-0" data-item_id="{{ product.slug }}" id="plus_item_{{ product.slug }}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                </button>
 
-                                         </div>
+                                            </div>
+                                        </div>
                                     </div>
+
+
                                 </div>
 
+                                <div class="col-12{% if s %} mt-2 {% endif %}">
+                                    <a href="{% url 'all_products' %}" class="btn btn-action rounded-0 mt-2">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Keep Shopping</span>
+                                    </a>
+                                    <button type="submit" class="btn btn-action-rev mt-2 ms-2">
+                                        <span class="text">Add to Cart</span>
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    {% endwith %}
+                                </div>
+                            </form>
 
-                            </div>
 
-                            <div class="col-12{% if s %} mt-2 {% endif %}">
-                                <a href="{% url 'all_products' %}" class="btn btn-action rounded-0 mt-2">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Keep Shopping</span>
-                                </a>
-                                <button type="submit" class="btn btn-action-rev mt-2 ms-2"> <span class="text">Add to Cart</span> <i class="fa fa-shopping-cart"></i> </button>
-                            </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            {% endwith %}
                         </div>
-                    </form>
-                    
-                    
-                </div> 
-            
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- REVIEW -->
+            <div class="card mt-4">
+                <header class="card-header">
+                    <h3>total  Reviews
+                    </h3>
+                    <div class="rating-star">
+                        <span>
+                            <i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                            <span>review count reviews</span>
+                        </span>
+                    </div>
+
+                </header>
+
+                <div class=" card-body box mb-3">
+                    <div class="icontext w-100">
+
+                        <div class="text">
+                            <span class="date text-muted float-md-right">review date
+                            </span>
+                            <h6 class="mb-1">Username
+                            </h6>
+                            <div class="rating-star">
+                                <span>
+                                    <i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- icontext.// -->
+                    <div class="mt-3">
+                        <h6>What a review</h6>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Distinctio error, pariatur, nemo unde molestias enim repellendus inventore quasi dicta possimus expedita. 
+                            Autem quia nesciunt provident placeat distinctio consectetur culpa quas!
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div> 
-    </div> 
-</div>
-</div>
-</div>
+    </div>
+
 
 {% endblock %}
 
 {% block postloadjs %}
-{{block.super}}
-<script src="{% static 'products/js/products.js' %}"></script> 
+    {{ block.super }}
+    <script src="{% static 'products/js/products.js' %}"></script>
 {% endblock %}
