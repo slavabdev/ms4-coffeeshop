@@ -38,7 +38,7 @@
                                     </thead>
 
                                     {% for item in bag_items %}
-                                    {{item}}
+                                    
                                         <tbody>
                                             <tr>
                                                 <td class="w-25">
@@ -58,7 +58,7 @@
                                                         </p>
                                                         
                                                         </div>
-                                                    </div>
+
                                                 </td>
                                                 <td>
                                                     <form class="form update-form" action="{% url 'update_item_bag' item.item_id %}" method="POST"> 
@@ -190,7 +190,7 @@
         //Shopbag update/remove
         //update quantity on click
         $('.update-pr-link').click(function(e){
-            let form = $(this).prev('.update-form')
+            let form = $(this).parent().prev().prev().children('.update-form')
             form.submit();
         });
 
