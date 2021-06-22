@@ -42,7 +42,11 @@
                                         <tbody>
                                             <tr>
                                                 <td class="w-25">
-                                                    <img src="{{ item.product.image.url }}" class="img-fluid">
+                                                    {% if item.product.image %}
+                                                        <img src="{{ item.product.image.url }}" class="img-fluid" alt="{{ item.product.name }}">
+                                                    {% else %}
+                                                        <img src="{{ MEDIA_URL }}placeholder.jpg" class="img-fluid" alt="{{ item.product.name }}">  
+                                                    {% endif %}
                                                 </td>
                                                 <td>
                                                     <div class="info">
@@ -166,6 +170,7 @@
                                             <img src="" height="26"></p>
                                             <a href="" class="btn btn-action-rev btn-block mb-3">
                                                 Checkout
+                                                    <i class="fas fa-lock"></i>
                                             </a>
                                             <a href="{% url 'all_products' %}" class="btn btn-action btn-block">Continue Shopping</a>
                                         </div>

@@ -162,7 +162,7 @@ body {
 }
 
 .sm-heading {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'OpenSans', sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
     text-align: center;
@@ -186,7 +186,6 @@ body {
 }
 
 /* bootstrap toasts */
-
 .message-container {
     position: fixed;
     top: 72px;
@@ -194,12 +193,26 @@ body {
     z-index: 99999999;
 }
 
+.toast {
+    width: 300px;
+}
+
 .upd-toast {
     overflow: visible;
 }
 
+.toast-body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .toast-capper {
-    height: 2px;
+    height: 4px;
+}
+
+.bag-toast-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
@@ -213,9 +226,20 @@ body {
     top: -8px;
     right: 36px;
 }
- .arrow-danger {
-     border-bottom-color:#dc3545 !important;
+ .arrow-red {
+     border-bottom-color:#dc3545;
  }
+ .arrow-green {
+    border-bottom-color:#198754;
+}
+
+.arrow-yellow {
+    border-bottom-color:#ffc107;
+}
+
+.arrow-blue {
+    border-bottom-color:#0dcaf0;
+}
 
 /*-------FOOTER---------*/
 
