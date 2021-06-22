@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="page-container">
@@ -16,11 +20,12 @@
     </div>
         <div class="col-12 col-md-6 col-lg-6">
 
-                <div class="content-body p-2">
+                <div class="content-body p-3">
 
-                    <h2 class="title">{{ product.name }}</h2>
+                    <h2 class="title">{{ product.name }} </h2> 
+                    <span href="" class="favme"><i class="fas fa-heart fa-lg"></i></span> <span class="fav-font text-muted"> Add to favourites</span>
                     <div class="mb-3">
-                        <div class="price h4">€ {{product.price}}</div>
+                        <div class="price h4 mt-2">€ {{product.price}}</div>
                     </div>
 
                     <p>{{ product.description }}</p>
@@ -111,5 +116,5 @@
 
 {% block postloadjs %}
 {{block.super}}
-<script src="{% static 'products/js/script.js' %}"></script> 
+<script src="{% static 'products/js/products.js' %}"></script> 
 {% endblock %}

@@ -1,41 +1,80 @@
-.handle-counter {
-  overflow:hidden; 
+/* favourite */
+@keyframes favme-beat {
+  0% {
+    transform:scale(1);
+  }
+  5% {
+    transform:scale(1.25);
+  }
+  20% {
+    transform:scale(1);
+  }
+  30% {
+    transform:scale(1);
+  }
+  35% {
+    transform:scale(1.25);
+  }
+  50% {
+    transform:scale(1);
+  }
+  55% {
+    transform:scale(1.25);
+  }
+  70% {
+    transform:scale(1);
+  }
 }
 
-.handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {
-  float:left;
-  text-align:center;
+@keyframes favme-anime {
+  0%   { 
+        opacity: 1;
+        font-size: ms(0);
+        -webkit-text-stroke-color: transparent;
+    }
+    25%	 { 
+        opacity:.6;
+        color: #FFF;
+        font-size: ms(-2);
+        -webkit-text-stroke-width: 1px;
+       -webkit-text-stroke-color: #DC3232;
+    }
+    75%	 { 
+        opacity:.6;
+        color: #FFF;
+        font-size: ms(3);
+        -webkit-text-stroke-width: 1px;
+       -webkit-text-stroke-color: #DC3232;
+    }
+  100% { 
+        opacity: 1;
+        font-size: ms(2);
+        -webkit-text-stroke-color: transparent;
+    }
 }
 
-.handle-counter .counter-minus,  .handle-counter .counter-plus {text-align:center; }
+.favme {
+    display:inline-block;
+    font-size: ms(2);
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    box-shadow: none;
+    color: #CBCDCE;
+    margin: 0;
+  }
+    .favme:hover {
+      animation: favme-beat 4s infinite alternate;
+    }
+  .active {
+        color: #DC3232;
+    }
 
-.handle-counter input {
-  width:50px;
-  border-width:1px;
-  border-left:none;
-  border-right:none;
-}
+  .is_animating {
+        animation: favme-anime .3s ease-out;
+    }
 
- 
-.btn {
-
-  padding:6px 12px;
-  border:1px solid transparent;
-  color:#fff;
-
-}
-
-
-.btn:disabled, .btn:disabled:hover {
-
-  background-color: darkgrey;
-  cursor: not-allowed;
-}
-
-.btn-primary {
-    background-color:#009dda; 
-}
-
-.btn-primary:hover, .btn-primary:focus {
-    background-color:#0486b9; 
-}
+  .fav-font {
+    font-size: .8rem;
+    font-family: 'Open Sans', sans-serif ;
+  }

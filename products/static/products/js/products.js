@@ -3,7 +3,7 @@
  //disable +/- buttons outside 1-99 range
  function handleEnableDisable(itemId){
   let currentValue = parseInt($(`#qty_${itemId}`).val());
-  let minusDisabled = currentValue < 2;
+  let minusDisabled = currentValue <=  1;
   let plusDisabled = currentValue > 98;
   $(`#minus_item_${itemId}`).prop('disabled', minusDisabled);
   $(`#plus_item_${itemId}`).prop('disabled', plusDisabled);
@@ -38,7 +38,7 @@ $('.decrement-qty').click(function(e){
   let currentValue = parseInt($(closestInput).val());
   $(closestInput).val(currentValue - 1);
   let itemId = $(this).data('item_id');
-  handleEnableDisable(ItemId);
+  handleEnableDisable(itemId);
 });
 
 //PRODUCTS
@@ -64,3 +64,21 @@ $("#sort-selector").change(function() {
       window.location.replace(currentUrl);
   }
 })
+
+
+// Add to fovorites button
+
+$('.favme').click(function() {
+	$(this).toggleClass('active');
+});
+
+/* when a user clicks, toggle the 'is-animating' class */
+$(".favme").on('click touchstart', function(){
+  $(this).toggleClass('is_animating');
+});
+
+/*when the animation is over, remove the class*/
+$(".favme").on('animationend', function(){
+  $(this).toggleClass('is_animating');
+});
+
