@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'products',
     'shopbag',
     'checkout',
+
+    'crispy_forms',
+    'crispy_bootstrap5',
     
 
 
@@ -63,6 +66,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'coffeeshop.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 TEMPLATES = [
     {
@@ -82,6 +87,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'shopbag.contexts.bag_contents',
             ],
+            'builtins':[
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
