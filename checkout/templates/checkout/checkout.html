@@ -22,10 +22,13 @@
                 <p class="text-muted">Order Summary ({{ product_count }})</p>
                 <div class="card p-2">
                     <div class="row">
-                        <div class="col-7 offset-2 ">
-                            <p class="mb-1 mt-0 small text-muted">Item</p>
+                        <div class="col-7">
+                            <p class="mb-1 mx-5 mt-0 small text-muted">Item</p>
                         </div>
-                        <div class="col-3 ">
+                        <div class="col-2 ">
+                            <p class="mb-1 mt-0 small text-muted">Qty</p>
+                        </div>
+                        <div class="col-2 ">
                             <p class="mb-1 mt-0 small text-muted">Price</p>
                         </div>
                     </div>
@@ -41,10 +44,13 @@
                                 </a>
                             </div>
                         
-                        <div class="col-7">
+                        <div class="col-5">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                             <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                            <p class="my-0 small text-muted"> </p>
+                        </div>
+                        <div class="col-2 ">
+                            <p class="mb-1 mt-0 small">{{ item.quantity }}</p>
                         </div>
                         <div class="col-3 ">
                             <p class="mb-1 mt-0 small">{{ item.product.price | calc_subtotal:item.quantity}} €</p>
@@ -111,7 +117,7 @@
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         <input type="hidden" value="" name="client_secret">
                     </fieldset>
-                    <div class="submit-button text-right mt-5 mb-2">                    
+                    <div class="submit-button text-right mt-5 mb-2 mx-3">                    
 						<a href="{% url 'the_bag' %}" class="btn btn-action-rev rounded-0">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
@@ -128,7 +134,7 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+							<span>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
 						</p>
 					</div>
                 </form>
@@ -150,5 +156,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
-   
+    {{stripe_public_key|json_script:"id_stripe_public_key"}}
+    {{client_secret|json_script:"id_client_secret"}}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
