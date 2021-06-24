@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load shopbag_tools %}
+
 {% block content %}
 
     <section class="section-content padding-y bg">
@@ -98,7 +100,7 @@
                                             <td>
                                                 <div class="price-wrap">
                                                     <div class="price">
-                                                        {{ item.product.price }}
+                                                        {{ item.product.price | calc_subtotal:item.quantity}}
                                                     </div>
                                                 </div>
                                             </td>

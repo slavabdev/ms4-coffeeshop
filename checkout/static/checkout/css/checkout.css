@@ -1,0 +1,20 @@
+.form-check-input:checked {
+    background-color: #ea8b4b;
+    border-color: #ea8b4b
+}
+
+.form-check-input:focus {
+    border-color: #ea8b4b;
+    box-shadow: none;
+}
+
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #000;
+}
+
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+}
