@@ -197,3 +197,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GOOGLE_AUTH_CLIENT_ID = os.getenv('GOOGLE_AUTH_CLIENT_ID', '')
 GOOGLE_AUTH_SECRET_KEY = os.getenv('GOOGLE_AUTH_SECRET_KEY', '')
+
+# stripe
+
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
