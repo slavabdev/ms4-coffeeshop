@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load shopbag_tools %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-container">
+    <div class="container">
+        <h2 class="text-center section-title ">
+            Success!
+        </h2>
+
+        <div class="row mt-4 mb-3">
+            <div class="col-12">
+                <h6 class="text-done"> Thank you! <br> Your order <strong> {{ order.order_number }} </strong> successfully processed! <br>
+                    A confirmation email will be sent to <strong> {{ order.email }} </strong>.</h6>
+            </div>
+        </div>
+        <div class="col-12 mb-5 ">
+            <a href="{% url 'all_products' %}" class="btn btn-action rounded-0 mt-2">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+        </div>
+    </div>
+</div>   
+
+{% endblock %}
+

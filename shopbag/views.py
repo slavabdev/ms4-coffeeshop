@@ -90,7 +90,7 @@ def remove_from_bag(request, item_id):
             if not shopbag[item_id]['items_by_size']:
                 shopbag.pop(item_id)
             messages.success(request, f'{size} {product.name} removed from your bag')   
-        else: 
+        else:
             shopbag.pop(item_id)
             messages.success(request, f'{product.name} removed from your bag')
 

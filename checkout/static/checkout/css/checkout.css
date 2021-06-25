@@ -8,6 +8,12 @@
     box-shadow: none;
 }
 
+.text-done {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 2;
+}
+
 #payment-form .form-control,
 #card-element {
     color: #000;

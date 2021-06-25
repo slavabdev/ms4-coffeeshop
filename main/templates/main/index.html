@@ -14,11 +14,15 @@
         <img src="{{MEDIA_URL}}slider-1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-content">
             <h3 class="carousel-heading">Find our the nearest coffeeshop to you</h3>
-            <a class="btn btn-link" href="#">
+            <a class="btn btn-action" href="#">
+              Go to shop
             </a>
         </div>
       </div>
       <div class="carousel-item" data-bs-interval="2000">
+        {% for product in products %}
+         {{product}}
+        {% endfor %}
         <img src="{{MEDIA_URL}}slider-1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
