@@ -40,6 +40,10 @@
 
                 <p>{{ product.description }}</p>
 
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'edit_product' product.slug %}" class="btn btn-warning rounded-0 btn-sm">Edit</a>
+                    <a href="" class="btn btn-danger rounded-0 btn-sm">Delete</a>
+                {% endif %}
                 <hr>
                     <form class="form" action="{% url 'add_item_bag' product.slug %}" method="POST">
                         {% csrf_token %}
@@ -103,7 +107,7 @@
                                         </span>
                                         <span class="text-uppercase">Keep Shopping</span>
                                     </a>
-                                    <button type="submit" class="btn btn-action-rev mt-2 ms-2">
+                                    <button type="submit" class="btn btn-action-rev rounded-0 mt-2 ms-2">
                                         <span class="text">Add to Cart</span>
                                         <i class="fa fa-shopping-cart"></i>
                                     </button>

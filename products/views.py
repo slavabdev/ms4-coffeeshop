@@ -86,3 +86,29 @@ def add_product(request):
 
     return render(request, template, context)
 
+
+def edit_product(request, product_slug):
+    ''' Edit a product details'''
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you have no access to change products!')
+        return redirect(reverse('home'))
+    product = get_object_or_404(Product, slug=product_slug)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Item successfully updated')
+            return redirect(reverse('product_detail', args=[product.slug]))
+        else:
+            messages.error(request, 'Item update failed')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+         'form': form,
+         'product': product,
+     }
+
+    return render(request, template, context)
