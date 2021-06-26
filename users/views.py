@@ -2,11 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from .models import UserProfile
 
 
-def user(request):
+def profile(request):
     '''
     Display user profile
     '''
-    template = 'users/user.html'
-    context = {}
+    profile = get_object_or_404(UserProfile, user=request.user)
+
+    template = 'users/profile.html'
+    context = {
+        'profile': profile,
+    }
 
     return render(request, template, context)

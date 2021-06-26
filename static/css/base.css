@@ -16,13 +16,13 @@ body {
     background-color:#ea8b4b;
 }
 
-
 /* Navigation */
 .drop-head,
 .dropdown-item {
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif; 
 }
+
 
 .drop-head {
     font-weight: 600;
@@ -35,6 +35,8 @@ body {
 .main-logo-text {
    color: #ea8b4b;
    text-transform: uppercase;
+   font-size: 26px;
+   
 }
 
 .main-logo-link {
@@ -59,6 +61,10 @@ body {
 .navbar-toggler {
     border: 0;
 }
+
+.list-inline-item a{
+    font-size: 1rem; 
+ }
 
 .carousel {
     margin-top: 100px;
@@ -293,6 +299,13 @@ footer {
 
 /*-------FOOTER MEDIA QUERIES---------*/
 
+@media (min-width: 1140px) {
+
+    .main-logo-text {
+        font-size: 32px;
+     }
+}
+
 /*-------for tablets---------*/
 @media(max-width:768px) {
     .sm-icon {
@@ -326,4 +339,3 @@ footer {
     }
 }
 
-  
