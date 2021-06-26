@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<section class="section-content">
+<div class="page-container">
+    
+<div class="container">
+    <h2 class="text-center section-title ">
+        My profile
+    </h2>
+	<div class="row">
+        <aside class="col-md-3">
+            <!--   SIDEBAR   -->
+            <ul class="list-group">
+              <a class="list-group-item " href=""> Main </a>
+              <a class="list-group-item " href=" "> My Orders </a>
+              <a class="list-group-item " href=" "> Favourites </a>
+              <a class="list-group-item" href=" "> Edit Profile </a>
+            </ul>
+            
+            <div class="text-center mt-2">
+                <a class="btn btn-action btn-block" href=""> <i class="fas fa-door-open"></i> <span class="text">Log out</span> </a>
+            </div>
+            <!--   SIDEBAR END   -->
+          </aside>
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<div class="d-inline-block mr-3 fw-bold">Logged in as:</div>
+			<span>user.full_name</span>
+		</header>
+		<div class="card-body">
+			<div class="row">
+
+			<div class="col-md-6">
+				<div class="card text-center">
+					<div class="card-body">
+						<h5 class="card-title">Total Orders</h5>
+						<h4>orders_count</h4>
+						<a href=" url 'my_orders' ">View Orders</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card text-center">
+					<div class="card-body">
+						<p class="mb-0">user.email</p>
+						<p class="mb-0">user.phone_number</p>
+                        <p> user.country </p>
+					</div>
+				</div>
+			</div>
+
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+</div>
+</section>
+
+{% endblock %}

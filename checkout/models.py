@@ -7,6 +7,7 @@ from django.conf import settings
 from django_countries.fields import CountryField
 
 from products.models import Product
+from users.models import UserProfile
 
 
 class Order(models.Model):
@@ -14,6 +15,8 @@ class Order(models.Model):
     create an order
     """
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, 
+                                    null=True, blank=True, related_name='orders' )
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -70,9 +73,10 @@ class OrderLineItem(models.Model):
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
-        ''' 
-        Override the original save method to set the order number
-        if it hasn't been set already
-        '''
+        ''' Override the original save method to set the order number
+        if it hasn't been set already '''
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Name{self.product.name} on order {self.order.order_number}'
