@@ -42,7 +42,30 @@
 
                 {% if request.user.is_superuser %}
                     <a href="{% url 'edit_product' product.slug %}" class="btn btn-warning rounded-0 btn-sm">Edit</a>
-                    <a href="" class="btn btn-danger rounded-0 btn-sm">Delete</a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#deleteItemModal" class="btn rounded-0 btn-danger btn-sm">
+                        Delete</a>
+                </td>
+                    <!-- Modal -->
+                    
+                <div class="modal fade" id="deleteItemModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteItemModalLabel">Delete product from database </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="main-text">You are going to delete {{product.name}}. 
+                            <br> 
+                            Confirm?</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="{% url 'delete_product' product.slug %}" class="remove-item btn btn-danger" >Delete</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 {% endif %}
                 <hr>
                     <form class="form" action="{% url 'add_item_bag' product.slug %}" method="POST">

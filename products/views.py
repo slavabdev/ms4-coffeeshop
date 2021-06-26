@@ -112,3 +112,14 @@ def edit_product(request, product_slug):
      }
 
     return render(request, template, context)
+
+
+def delete_product(request, product_slug):
+    ''' delete a product srom the shop '''
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you have no access to change products!')
+        return redirect(reverse('main'))
+    product = get_object_or_404(Product, slug=product_slug)
+    product.delete()
+    messages.success(request, 'Product successfully deleted')
+    return redirect(reverse('all_products'))
