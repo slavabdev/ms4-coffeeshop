@@ -37,7 +37,7 @@ def update_profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'profile': profile,
     }
 
     return render(request, template, context)
@@ -46,7 +46,6 @@ def update_profile(request):
 def all_order_history(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.orders.all()
-    
     template = 'users/all_order_history.html'
     context = {
         'profile': profile,
@@ -58,16 +57,14 @@ def all_order_history(request):
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
-    orders = profile.orders.all()
 
     messages.info(request, (f'This is  past confirmation for \
                             order number {order_number}.'
                             'A confirmation was sent on the order date'))
 
-    template = 'users/all_order_history.html'
+    template = 'checkout/checkout_success.html'
     context = {
         'order': order,
-        'orders': orders,
         'from_profile': True,
     }
 

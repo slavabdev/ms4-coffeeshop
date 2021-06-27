@@ -16,26 +16,35 @@
 		<article class="card">
 		<header class="card-header">
 			<div class="d-inline-block mr-3 fw-bold">Logged in as:</div>
-			<span>{{profile}}</span>
+			<span>{{profile|upper}}</span>
 		</header>
 		<div class="card-body">
 			<div class="row">
 
-			<div class="col-md-6">
+			<div class="col-md-6 ">
 				<div class="card text-center">
-					<div class="card-body">
-						<h5 class="card-title">Total Orders:</h5>
-						<h6>{{orders_count}}</h6>
+					<div class="card-body ">
+						<h5 class="card-title main-title">Total Orders:</h5>
+						{% if order.order_count == 0 %}
+							<p class="main-text">You have no orders yet</p>
+						{% else %}
+							<h6>{{orders_count}}</h6>
+						{% endif %}
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="card text-center">
 					<div class="card-body">
-						<h5 class="card-title">User summary:</h5>
-						<p class="mb-0">{{profile.default_phone_number}}</p>
-						<p class="mb-0">{{profile.default_town_or_city}}</p>
-						<p class="mb-0">{{profile.default_country.name}}</p>
+						<h5 class="card-title main-title">User summary:</h5>
+						{% if profile %}
+						<p class=" main-text mb-1"> <i class="fas fa-mobile-alt"></i> {{profile.default_phone_number}}</p>
+						<p class="mb-1"> <i class="fas fa-city"></i> {{profile.default_town_or_city}}</p>
+						<p class="mb-0"> <i class="fas fa-globe-americas"></i> {{profile.default_country.name}}</p>
+						{% else %}
+						<p class="">Your information will appear after your first order'
+						</p>
+						{% endif %}
                         
 					</div>
 				</div>
