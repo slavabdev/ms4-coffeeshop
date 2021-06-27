@@ -3,7 +3,8 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from django.contrib import messages
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
+
 
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -42,15 +43,31 @@ def update_profile(request):
     return render(request, template, context)
 
 
+def all_order_history(request):
+    profile = get_object_or_404(UserProfile, user=request.user)
+    orders = profile.orders.all()
+    
+    template = 'users/all_order_history.html'
+    context = {
+        'profile': profile,
+        'orders': orders
+
+    }
+    return render(request, template, context)
+
+
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    orders = profile.orders.all()
 
-    messages.info(request, (f'This is  past confirmation for order number {order_number}.' 
-    'A confirmation was sent on the order date'))
+    messages.info(request, (f'This is  past confirmation for \
+                            order number {order_number}.'
+                            'A confirmation was sent on the order date'))
 
-    template = 'checkout/checkout_success.html'
+    template = 'users/all_order_history.html'
     context = {
-        'order':order,
+        'order': order,
+        'orders': orders,
         'from_profile': True,
     }
 

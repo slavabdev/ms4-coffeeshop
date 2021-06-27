@@ -8,6 +8,9 @@ from shopbag.contexts import bag_contents
 from .models import Product
 from .models import Order, OrderLineItem
 
+from users.models import UserProfile
+
+
 import stripe
 import json
 
@@ -53,7 +56,12 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_shopbag = json.dumps(shopbag)
+
+            user = UserProfile.objects.get(user=request.user)
+            order.user_profile = user
+            
             order.save()
+            
             for item_id, item_data in shopbag.items():
                 try:
                     product = Product.objects.get(slug=item_id)
