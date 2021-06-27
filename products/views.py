@@ -114,7 +114,7 @@ def edit_product(request, product_slug):
 
 
 def delete_product(request, product_slug):
-    ''' delete a product srom the shop '''
+    ''' delete a product from the shop '''
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you have no access to change products!')
         return redirect(reverse('main'))

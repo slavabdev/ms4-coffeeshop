@@ -1,0 +1,14 @@
+<aside class="col-md-3">
+    <!--- SIDEBAR   -->
+    <ul class="list-group">
+      <a class="list-group-item " href="{% url 'profile' %}"> My profile </a>
+      <a class="list-group-item " href="{% url 'order_history' order.order_number %}"> My Orders </a>
+      <a class="list-group-item " href=" "> Favourites </a>
+      <a class="list-group-item" href="{% url 'update_profile' %} "> Update delivery info </a>
+    </ul>
+    
+    <div class="text-start mt-2">
+        <a class="btn btn-action rounded-0 btn-block" href="{% url 'account_logout' %}"> <i class="fas fa-door-open"></i> <span class="text">Log out</span> </a>
+    </div>
+    <!--   SIDEBAR END   -->
+  </aside>

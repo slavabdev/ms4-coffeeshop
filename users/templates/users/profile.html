@@ -3,8 +3,6 @@
 
 {% block content %}
 
-
-
 <section class="section-content">
 <div class="page-container">
     
@@ -13,20 +11,7 @@
         My profile
     </h2>
 	<div class="row">
-        <aside class="col-md-3">
-            <!--- SIDEBAR   -->
-            <ul class="list-group">
-              <a class="list-group-item " href=""> Main </a>
-              <a class="list-group-item " href=" "> My Orders </a>
-              <a class="list-group-item " href=" "> Favourites </a>
-              <a class="list-group-item" href=" "> Edit Profile </a>
-            </ul>
-            
-            <div class="text-center mt-2">
-                <a class="btn btn-action btn-block" href=""> <i class="fas fa-door-open"></i> <span class="text">Log out</span> </a>
-            </div>
-            <!--   SIDEBAR END   -->
-          </aside>
+		{% include "users/includes/sidebar.html" %}
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
@@ -39,21 +24,23 @@
 			<div class="col-md-6">
 				<div class="card text-center">
 					<div class="card-body">
-						<h5 class="card-title">Total Orders</h5>
-						<h4>orders_count</h4>
-						<a href=" url 'my_orders' ">View Orders</a>
+						<h5 class="card-title">Total Orders:</h5>
+						<h6>{{orders_count}}</h6>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="card text-center">
 					<div class="card-body">
-						<p class="mb-0">user.email</p>
-						<p class="mb-0">user.phone_number</p>
-                        <p> user.country </p>
+						<h5 class="card-title">User summary:</h5>
+						<p class="mb-0">{{profile.default_phone_number}}</p>
+						<p class="mb-0">{{profile.default_town_or_city}}</p>
+						<p class="mb-0">{{profile.default_country.name}}</p>
+                        
 					</div>
 				</div>
 			</div>
+
 
 			</div> 
 		</div> 
