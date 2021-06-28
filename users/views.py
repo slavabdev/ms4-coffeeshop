@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from .models import UserProfile
 from .forms import UserProfileForm
+from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 from checkout.models import Order
-from products.models import Product
 
 
+@login_required
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.orders.all()

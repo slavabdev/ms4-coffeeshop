@@ -1,4 +1,9 @@
 /* favourite */
+
+a:hover{
+  color: #dc3545;
+}
+
 @keyframes favme-beat {
   0% {
     transform:scale(1);
@@ -65,9 +70,6 @@
   }
     .favme:hover {
       animation: favme-beat 4s infinite alternate;
-    }
-  .active {
-        color: #DC3232;
     }
 
   .is_animating {

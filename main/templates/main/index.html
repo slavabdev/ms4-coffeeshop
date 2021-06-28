@@ -13,8 +13,8 @@
       <div class="carousel-item active" data-bs-interval="10000">
         <img src="{{MEDIA_URL}}slider-1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-content">
-            <h3 class="carousel-heading">Find our the nearest coffeeshop to you</h3>
-            <a class="btn btn-action" href="#">
+            <h3 class="carousel-heading">Are you a coffee fan? <br> Check our shop</h3>
+            <a class="btn btn-action rounded-0" href="{% url 'all_products' %}">
               Go to shop
             </a>
         </div>
@@ -23,10 +23,14 @@
         {% for product in products %}
          {{product}}
         {% endfor %}
-        <img src="{{MEDIA_URL}}slider-1.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+        <img src="{{MEDIA_URL}}slider-2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-content">
+          <h3 class="carousel-heading">Check our coffee equipment. Trust us, it is amazing! </h3>
+          <a class="btn btn-action rounded-0" href="{% url 'all_products' %}?category=equipment">
+            Go to shop
+          </a>
+      </div>
+          
         </div>
       </div>
     </div>
@@ -75,9 +79,12 @@
   <div class="row">
   <div class="col-lg-6 col-md-6 col-12">
     <div class="section-text">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Ipsam fugit sit adipisci ducimus neque dignissimos optio alias ut perspiciatis ullam eaque, 
-        aspernatur unde quasi natus possimus. Nihil quibusdam optio ab.</p>
+      <p class="main-text">Welcome to the Coffee Cup!
+        <br><br>
+        We proudly sell a trully delicious coffee across the Ireland. 
+        Along with coffee you can buy higf-quality merch as well as professional and home coffee equipment!
+        <br><br>
+        You will defenitely enjoy it!</p>
     </div>
   </div>
   <div class="col-lg-6 col-md-6 col-12">

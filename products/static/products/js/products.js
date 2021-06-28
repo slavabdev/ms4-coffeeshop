@@ -68,10 +68,6 @@ $("#sort-selector").change(function() {
 
 // Add to fovorites button
 
-$('.favme').click(function() {
-	$(this).toggleClass('active');
-});
-
 /* when a user clicks, toggle the 'is-animating' class */
 $(".favme").on('click touchstart', function(){
   $(this).toggleClass('is_animating');

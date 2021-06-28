@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from .models import Product, Category
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .forms import ProductForm
@@ -57,12 +58,14 @@ def all_products(request):
 def product_detail(request, product_slug):
     '''A view to show an individual product details'''
     product = get_object_or_404(Product, slug=product_slug)
+    is_favourite = product.favourites.filter(id=request.user.id).exists()
     context = {
         'product': product,
+        'is_favourite': is_favourite
     }
     return render(request, 'products/product_detail.html', context)
 
-
+@login_required
 def add_product(request):
     '''add a product to th store'''
     if not request.user.is_superuser:
@@ -85,7 +88,7 @@ def add_product(request):
 
     return render(request, template, context)
 
-
+@login_required
 def edit_product(request, product_slug):
     ''' Edit a product details'''
     if not request.user.is_superuser:
@@ -112,7 +115,7 @@ def edit_product(request, product_slug):
 
     return render(request, template, context)
 
-
+@login_required
 def delete_product(request, product_slug):
     ''' delete a product from the shop '''
     if not request.user.is_superuser:

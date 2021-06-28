@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+            <div id="navbar" class="row bg-white pt-lg-2 d-none d-lg-flex">
                 <div class="col-12 col-lg-3 col-xl-3 my-auto py-1 py-lg-0 text-center text-lg-left">
                     <a class="nav-link main-logo-link " href="{% url 'main' %}">
                         <h2 class="main-logo-text my-0">
@@ -198,7 +198,11 @@
                         </a>
                     </div>
                 </div>
-                <p class="footer-text">Coffee cup 2021</p>
+                <div class="footer-text">
+                    <div class="container">
+                        <p class="footer_text"> &copy; Coffee Cup <span class="copyright"></span> </p>
+                    </div>
+                </div>
             </footer>
 
             {% block postloadjs %}
@@ -212,6 +216,8 @@
                 });        
                  
                 </script>
+
+                <script src="{% static 'js/base.js' %}"></script>
             {% endblock %}
         </body>
     </body>
