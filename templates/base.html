@@ -107,7 +107,6 @@
                                 {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
                                         <a href="{% url 'add_product' %}" class="dropdown-item">Manage products</a>
-                                        <a href="" class="dropdown-item">Manage news</a>
                                     {% endif %}
                                     <a href="{% url 'profile' %}" class="dropdown-item">My profle</a>
                                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>

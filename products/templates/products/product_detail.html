@@ -28,19 +28,11 @@
 
                 <h2 class="title">{{ product.name }}
                 </h2>
-                <div class="fav-icon">
-                    {% if favourite %}
-                        <a class="text-danger" href="{% url 'favourites' product.slug %}">
-                                <i class="far fa-heart fa-lg"></i>
-                        </a>
-                    {% else %}
-                        <a class="text-muted" href="{% url 'favourites' product.slug %}">
-                            <i class="fas fa-heart fa-lg"></i>
-                        </a>
-                    {% endif %}
-                    <span class="fav-font text-muted">
-                        Add to favourites</span>
-                </div>
+                <span href="{% url 'favourites' product.slug %}" class="favme">
+                    <i class="fas fa-heart fa-lg"></i>
+                </span>
+                <span class="fav-font text-muted">
+                    Add to favourites</span>
                 <div class="mb-3">
                     <div class="price h4 mt-2">€
                         {{ product.price }}</div>
