@@ -123,10 +123,12 @@ body {
 
 .page-container {
     padding-top: 8rem;
+    position: relative;
+    height: 100%;
+    min-height: 80vh;
 }
 
 /* buttons */
-
 
 .btn-action {
     background: white;
@@ -388,6 +390,16 @@ footer {
 
 /* Allauth form formatting */
 
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+}
+
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
     color: #6c757d;
@@ -406,6 +418,10 @@ footer {
     color: #aab7cd;
 }
 
+ .form-check-input:checked {
+    background-color: #ea8b4b;
+}
+
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
 	/* btn */
@@ -418,12 +434,13 @@ footer {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #000;
-    border: 1px solid #000;
+    background-color: #ea8b4b;
+    border: 1px solid #ea8b4b;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0;
+    text-transform: uppercase;
 
     /* standard bootstrap btn transitions */
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -431,11 +448,11 @@ footer {
 
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {	
-	color: #fff;
-    background-color: #222;
-    border-color: #222;
+	color: #ea8b4b;
+    background-color: #fff;
+    border-color: #ea8b4b;
 }
 
 .allauth-form-inner-content a {
-	color: #17a2b8; /* text-info */
+	color: #ea8b4b; /* text-info */
 }
