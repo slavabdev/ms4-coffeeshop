@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from products.models import Product
 from users.models import UserProfile
 
 
-
+@login_required
 def favourites(request, product_slug):
     """
     This function allows to add products to favourites
@@ -18,6 +19,7 @@ def favourites(request, product_slug):
     return redirect(reverse('product_detail', args=[product.slug]))
 
 
+@login_required
 def favourites_list(request):
     """
     This function renders favourite products
