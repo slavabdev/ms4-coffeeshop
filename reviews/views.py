@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from reviews.models import Review
 from django.contrib import messages
 from products.models import Product
@@ -19,7 +20,7 @@ def review_list(request, product_slug):
 
     return render(request, 'products/product_detail.html', context)
 
-
+@login_required
 def add_review(request, product_slug):
 
     """to add reviews"""
@@ -46,31 +47,31 @@ def add_review(request, product_slug):
         return redirect('main')
 
 
-def edit_review(request, product_slug, review_id):
+@login_required
+def edit_review(request, pk):
     """Function to edit reviews"""
 
     if request.user.is_authenticated:
-        product = Product.objects.get(slug=product_slug)
-        review = Review.objects.get(product=product, pk=review_id)
+        review = Review.objects.get(pk=pk)
 
         if request.user.userprofile == review.user:
             if request.method == 'POST':
-                form = ReviewForm(request.POST, instance=review)
-                if form.is_valid():
-                    form = form.save(commit=False)
-                    form.save()
-                    messages.success(request, 'You successfully edited review!')
-                    return redirect('product_detail', product_slug)
+                review.review_title = request.POST['review_title']
+                review.review_body = request.POST['review_body']
+                review.save()
+                messages.success(request, 'You successfully edited review!')
+                return redirect('product_detail', review.product.slug)
             else:
                 form = ReviewForm(instance=review)
-            return render(request, 'reviews/edit_review.html', {'form': form})
+            return render(request, 'reviews/edit_review.html', {'form': form, 'review': review})
         else:
             messages.error(request, 'Sorry, only review owner can do that.')
-            return redirect('product_detail', product_slug)
+            return redirect('product_detail')
     else:
         return redirect('main')
 
 
+@login_required
 def delete_review(request, product_slug, review_id):
     """Function to edit reviews"""
 
