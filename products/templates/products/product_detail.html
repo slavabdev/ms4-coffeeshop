@@ -129,10 +129,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                                 <div class="col-12{% if s %} mt-2 {% endif %}">
                                     <a href="{% url 'all_products' %}" class="btn btn-action rounded-0 mt-2">
                                         <span class="icon">
@@ -149,67 +146,70 @@
                                     {% endwith %}
                                 </div>
                             </form>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
 
 
-            <!-- REVIEW -->
-            <div class="card mt-4">
-                <header class="card-header">
-                    <h3>total  Reviews
-                    </h3>
-                    <div class="rating-star">
-                        <span>
-                            <i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
-                            <i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
-                            <i class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
-                            <i class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
-                            <i class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
-                            <span>review count reviews</span>
-                        </span>
-                    </div>
+    <!-- REVIEW -->
+    <div class="card mt-4 p-4">
+        <div class="row">
+            <div class="col">
+        <header class="section-heading">
+            <h3 class="main-title fs-3">Customer Reviews </h3>
+            <hr>
+        </header>
 
-                </header>
-
-                <div class=" card-body box mb-3">
-                    <div class="icontext w-100">
-
-                        <div class="text">
-                            <span class="date text-muted float-md-right">review date
-                            </span>
-                            <h6 class="mb-1">Username
-                            </h6>
-                            <div class="rating-star">
-                                <span>
-                                    <i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
-                                    <i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
-                                    <i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
-                                    <i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
-                                    <i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- icontext.// -->
-                    <div class="mt-3">
-                        <h6>What a review</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Distinctio error, pariatur, nemo unde molestias enim repellendus inventore quasi dicta possimus expedita. 
-                            Autem quia nesciunt provident placeat distinctio consectetur culpa quas!
-                        </p>
-                    </div>
+    {% for review in reviews %}
+        <article class="box mb-3">
+            <div class="icontext w-100">
+                <div class="text">
+                    <span class="date text-muted float-md-right">{{ review.date_added|date:'d M Y'}} </span>
+                    <h6 class="mb-1 mt-2">User: {{review.user|capfirst}} </h6>
+                    
                 </div>
+            </div> <!-- icontext.// -->
+            <div class="mt-3">
+                <h5 class="fw-bold">{{review.review_title|capfirst}}</h5>
+                <p class="main-text mt-3">
+                    {{review.review_body|capfirst}}
+                </p>
             </div>
-        </div>
+            <a class="btn btn-sm btn-warning text-uppercase rounded-0" href="{% url 'edit_review' product.slug review.id %}">Edit</a> 
+            <a class="btn btn-sm btn-danger text-uppercase rounded-0" href="{% url 'delete_review' product.slug review.id %}"> Delete</a> 
+        </article>
+        <hr>
+    {% endfor%}
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> 
+
+    {% if user.is_authenticated %}
+    <div class="card mt-4 p-4">
+        <div class="row">
+            <div class="col-md-9">
+                <form action="{% url 'add_review' product.slug %}" method="POST">
+                    {% csrf_token %}
+                    <h5 class="mb-3 sm-heading text-start">Write, what do you think about this product</h5>
+                    <hr>
+                    <div>       
+                        <fieldset class="form-fields">
+                            {{form.review_title|as_crispy_field}}
+                            {{form.review_body|as_crispy_field}}
+                        </fieldset>
+                        <br>
+                        <input type="submit" value="Submit Review" class="btn btn-action">
+                  
+                    </div>
+                </form>
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
     </div>
-
-
+    {% else %}
+    <h6 class="main-text fs-5 mt-3 text-start">You must be logged in to post a review. <span><a class="main-title fs-5 text-capitalize" href="{% url 'account_login' %}">Login now</a></span></h6>
+    {% endif %}
+    
 {% endblock %}
 
 {% block postloadjs %}
