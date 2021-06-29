@@ -72,12 +72,6 @@ body {
     font-size: 1rem; 
  }
 
-.carousel {
-    margin-top: 100px;
-}
-
-
-
 /*-----------------CAROUSEL---------------*/
 
 .carousel-item img {
@@ -85,7 +79,10 @@ body {
     width: 100%;
     object-fit: cover;
     object-position: bottom;
+}
 
+.carousel {
+    margin-top: 100px;
 }
 
 .carousel-content {
@@ -98,11 +95,13 @@ body {
     padding: 5px;
     text-align: center;
 }
+
 .carousel-indicators [data-bs-target]{
     width: 15px;
     height: 15px;
     border-radius: 50%;
 }
+
 .carousel-heading {
     text-transform: uppercase;
     color: #f9f8f6;
@@ -111,7 +110,6 @@ body {
     font-weight: 600;
     margin-bottom: 2rem;
 }
-
 
 /* Sections */
 #products,
@@ -146,7 +144,6 @@ body {
     border: solid 1px white;
 }
 
-
 .btn-action-rev {
     background: #ea8b4b;
     color: white;
@@ -162,7 +159,6 @@ body {
     color: #ea8b4b;
     border: solid 1px #ea8b4b;
 }
-
 
 /* Heading */
 .section-title {
@@ -330,7 +326,7 @@ footer {
     }
 
     .carousel-heading {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .section-title {
@@ -345,6 +341,10 @@ footer {
 @media(max-width:600px) {
     .sm-icon {
         margin-right: 1rem;  
+    }
+
+    .carousel-heading {
+        font-size: 16px;
     }
 
     .sm-icon a {
