@@ -8,8 +8,8 @@ class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
                                 null=True, blank=True)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE,
-                                     null=False, blank=False)
-    review_title = models.CharField(max_length=200, blank=False, default='')                               
+                             null=False, blank=False)
+    review_title = models.CharField(max_length=200, blank=False, default='')
     review_body = models.CharField(max_length=400, blank=False, default='')
     date_added = models.DateTimeField(auto_now=True)
 

@@ -66,7 +66,7 @@ def edit_review(request, pk):
             return render(request, 'reviews/edit_review.html', {'form': form, 'review': review})
         else:
             messages.error(request, 'Sorry, only review owner can do that.')
-            return redirect('product_detail')
+            return redirect('product_detail', review.product.slug)
     else:
         return redirect('main')
 
