@@ -1,13 +1,13 @@
 <aside class="col-md-3">
     <!--- SIDEBAR   -->
     <ul class="list-group">
-      <a class="list-group-item " href="{% url 'profile' %}"> My profile </a>
-      <a class="list-group-item " href="{% url 'all_order_history' %}"> My Orders </a>
-      <a class="list-group-item " href="{% url 'favourites_list' %} "> Favourites </a>
-      <a class="list-group-item" href="{% url 'update_profile' %} "> Update delivery info </a>
+      <li class="list-unstyled"><a class="list-group-item " href="{% url 'profile' %}"> My profile </a></li>
+      <li class="list-unstyled"><a class="list-group-item " href="{% url 'all_order_history' %}"> My Orders </a></li> 
+      <li class="list-unstyled"><a class="list-group-item " href="{% url 'favourites_list' %} "> Favourites </a></li>
+      <li class="list-unstyled"><a class="list-group-item" href="{% url 'update_profile' %} "> Update delivery info </a></li>
     </ul>
     
-    <div class="text-start mt-2">
+    <div class="text-start mt-2 mb-4">
         <a class="btn btn-action rounded-0 btn-block" href="{% url 'account_logout' %}"> <i class="fas fa-door-open"></i> <span class="text">Log out</span> </a>
     </div>
     <!--   SIDEBAR END   -->

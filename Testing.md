@@ -1,8 +1,8 @@
 # Testing
 The W3C Markup Validator and W3C CSS Validator Services were used in the project to ensure there were no syntax errors.
-* [W3C Markup Validator](https://validator.w3.org/nu/)
+* [W3C Markup Validator](https://validator.w3.org/nu/) 
+    ***some issues indicated comming from bootstrap5***
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-   - One mistake in Materialize URI https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css detected
 * [JSHint](https://jshint.com/)
 * [PEP8](http://pep8online.com/) 
 

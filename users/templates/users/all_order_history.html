@@ -7,63 +7,62 @@
 
 <div class="page-container">
     <div class="container">
-        <h2 class="text-center section-title ">
+        <h2 class="text-center section-title mt-5 ">
             Order History
         </h2>
-<div class="row">
-        {% include "users/includes/sidebar.html" %}
-    
-<div class="col-12 col-lg-8 mt-3">
-    {% if orders|length == 0 %}
-    <h6 class="sm-heading">You have no orders yet </h6>
-    {% else %}
-   <div class="order-history table-responsive table-sm">
-       <table class="table table-sm">
-           <thead>
-               <tr>
-                   <th>Order number</th>
-                   <th>Date</th>
-                   <th>Items</th>
-                   <th>Order Total</th>
-               </tr>
-           </thead>
-           <tbody>
-               {% for order in orders %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'order_history' order.order_number %}" 
-                            title="{{order.order_number}}">
-                            {{ order.order_number|truncatechars:10 }}
-                        </a>
-                        </td>
-                        <td>
-                            {{order.date}}
-                        </td>
-                        <td>
-                            <ul class="list-unstyled">
-                                {% for item in order.lineitems.all %}
-                                <li class="small">
-                                    {% if item.product.has_sizes %}Size
-                                        {{ item.product_size|upper }}
-                                    {% endif %} 
-                                    {{ item.product.name }} x{{item.quantity}}
-                                </li>
-                                {% endfor %}   
-                            </ul>
-                        </td>
-                        <td>
-                            {{order.grand_total}}
-                        </td>
+        <div class="row">
+                {% include "users/includes/sidebar.html" %}
+            
+        <div class="col-12 col-lg-8 mt-3">
+            {% if orders|length == 0 %}
+            <h6 class="sm-heading">You have no orders yet </h6>
+            {% else %}
+            <div class="order-history table-responsive table-sm">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Order number</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' order.order_number %}" 
+                                        title="{{order.order_number}}">
+                                        {{ order.order_number|truncatechars:10 }}
+                                    </a>
+                                    </td>
+                                    <td>
+                                        {{order.date}}
+                                    </td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                            <li class="small">
+                                                {% if item.product.has_sizes %}Size
+                                                    {{ item.product_size|upper }}
+                                                {% endif %} 
+                                                {{ item.product.name }} x{{item.quantity}}
+                                            </li>
+                                            {% endfor %}   
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        {{order.grand_total}}
+                                    </td>
 
-                    </tr>
-               {% endfor %}
-
-           </tbody>
-       </table>
-
-   </div>
-</div>
-{% endif %}
-</div>
+                                </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
