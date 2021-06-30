@@ -108,7 +108,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SITE_ID = 2
+SITE_ID = 4
 
 # authentification citeria
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
