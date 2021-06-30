@@ -13,7 +13,7 @@
     <div class="row">
         {% include "users/includes/sidebar.html" %}
         
-      <div class="col-8 mt-3">
+      <div class="col-8">
         <div class="row">
           {% if favourite|length == 0 %}
           <h6 class="sm-heading"> You have no favourites yet</h6>
@@ -45,8 +45,8 @@
                     <p class="mb-0 fs-5">{{ product.name }}</p>
                     <p class="lead mb-2 text-left fw-bold">€{{ product.price }}</p>
                       
-                    </div>
                   </div>
+                </div>
               </div>
               {% endfor %}
             {% endif %}

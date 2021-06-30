@@ -5,7 +5,8 @@
 [View the project here.]( https://ms4-coffee-cup.herokuapp.com/)
 </div>
 
-<h2 align="center"><a href=""><img src="" alt="food-screenshot" border="0"></a><h2 align="center">
+<h2 align="center"><a href="https://ibb.co/zRbcNZz"><img src="https://i.ibb.co/tscf3D9/website.png" alt="website" border="0"></a><h2 align="center">
+
 
 ### **Legend**:
 This is a website of **Coffee Cup coffeeshop** – for people who like to drink coffee and want to have everything they need for a good cup of coffee at home.
@@ -35,9 +36,8 @@ This is a website of **Coffee Cup coffeeshop** – for people who like to drink 
 *	As an **interested visitor** I want to have an ability to add/edit/delete products in my shopping cart;
 *	As an **interested visitor** I want to have an option to save some products to favorites;
 *	As an **interested visitor** I want to have a profile page, where I can keep see the history of my orders and other user-related information;
-*	As an **interested visitor** I want to get more information about the “Coffee Cup” company and check their social media pages.
 
-As a **superuser**, I want have an ability to add, edit and remove content and products on/from the website sort them by different criteria and search them using keywords;
+As a **superuser**, I want have an ability to add, edit and remove content and products on/from the website. 
 
 ### Design
 - Color Scheme:
@@ -187,7 +187,7 @@ One of the main task was to make website pleasing to the eye. By this reason the
 10. [Stripe](https://stripe.com/) 
     - payment system used in the project 
 ## Testing
-All-testing has been documented [Testing.md]()
+All-testing has been documented [Testing.md](https://github.com/slavabdev/ms4-coffeeshop/blob/master/Testing.md)
 ## Deployment
 This project was developed using the GitPod, committed to Git and pushed to [GitHub repository](https://github.com/slavabdev/ms4-coffeeshop/).
 - The following GIT commands were used throughout deployment:
@@ -385,10 +385,10 @@ $ git clone https://github.com/slavabdev/ms4-coffeeshop
 > Unpacking objects: 100% (10/10), done.
 ```
 ### Content
-- All content was written by the developer.
+- All content (except product description) was written by the developer.
 ### Media
 - All images (ecxept the products) were taken from [unplush](https://unsplash.com).
-- All product images and descriptions were tken from [SOMA](https://somacoffeecompany.ie) and [3FE](https://3fe.com)
+- All product images and descriptions were taken from [SOMA](https://somacoffeecompany.ie) and [3FE](https://3fe.com)
     
 ### Acknowledgements
 - Friends and family for helpful feedback.
